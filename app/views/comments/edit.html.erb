@@ -1,0 +1,3 @@
+<%= form_tag update_comment_url(@comment.id), :method => :patch %>
+<%= text_field_tag :comment, @comment.text %>
+<input type="submit" name="commit" value="Submit">

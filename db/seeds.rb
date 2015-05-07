@@ -38,6 +38,8 @@ Article.create 	title: "10 restaurants not reachable by car",
 				url: "http://experience.usatoday.com/food-and-wine/story/best-of-food-and-wine/2015/04/14/remote-restaurants-not-reachable-by-car/25729083/",
 				publish_date: Date.parse('2015-04-14')
 
+User.create 	name: "Dana Katz"
+
 
 
 # This file should contain all the record creation needed to seed the database with its default values.

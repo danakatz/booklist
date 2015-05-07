@@ -38,6 +38,8 @@ Comment
   article_id: integer
   text: string
 
+User
+  name: string
 
 
 # Example table for a typical Book model.

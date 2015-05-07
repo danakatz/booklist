@@ -1,0 +1,9 @@
+<h3> New Comment </h3>
+
+<%= form_tag "/comments" do %> 
+
+  <%= text_field_tag :comment, "", placeholder: 'What do you think?' %>
+
+  <input type="submit" name="commit" value="Submit">
+  
+<% end %>

@@ -1,0 +1,7 @@
+<h2>Comments</h2>
+
+<%= link_to "new comment", new_comment_url %>
+<% @comments.each do |comment| %>
+  <p><%= comment.text %> <%= link_to "view", comment_url(comment.id) %> <%= link_to "edit", edit_comment_url(comment.id) %></p>
+
+<% end %>
