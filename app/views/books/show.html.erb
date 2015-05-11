@@ -1,2 +1,13 @@
+<%= image_tag @book.image_url, class: "book_cover" %>
 <h3><%= @book.title %></h3>
+<h4>by <%= @book.author.name %></h4>
+
+<% if !@book.description.present? %>
+	<p>No description available.</p>
+<% else %>
+	<p><%= @book.description %></p>
+<% end %>
+
+<%= link_to 'Bookmark' %></br>
+<%= link_to 'Add author to Favorites' %></br>
 <%= link_to 'Home', books_url %>

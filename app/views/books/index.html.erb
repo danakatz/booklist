@@ -4,7 +4,7 @@
 	<%= book.rank %>. 
 	<%= link_to book.title, book_url(book.id) %> - <%= book.author.name %>
 	<% if book.reviewed %>
-		<%= link_to 'Read reviews', "books/#{book.id}/reviews/" %>
+		- <%= link_to 'Read reviews', "books/#{book.id}/reviews/" %>
 	<% end %>
 	</br>
 <% end %>
