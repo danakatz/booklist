@@ -13,72 +13,80 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string  "title"
-    t.integer "author_id"
-    t.integer "publication_id"
-    t.integer "section_id"
-    t.string  "url"
-    t.date    "publish_date"
-  end
-
-  add_index "articles", ["author_id"], name: "index_articles_on_author_id"
-  add_index "articles", ["publication_id"], name: "index_articles_on_publication_id"
-  add_index "articles", ["section_id"], name: "index_articles_on_section_id"
-
   create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "book_comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "article_id"
+    t.integer "book_id"
     t.string  "text"
   end
 
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "book_comments", ["book_id"], name: "index_book_comments_on_book_id"
+  add_index "book_comments", ["user_id"], name: "index_book_comments_on_user_id"
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "article_id"
+  create_table "books", force: :cascade do |t|
+    t.string  "title"
+    t.integer "author_id"
+    t.string  "isbn"
+    t.string  "image_url"
+    t.string  "amazon_url"
+    t.boolean "reviewed",    default: false
+    t.integer "rank"
+    t.boolean "current",     default: false
+    t.string  "description"
   end
 
-  add_index "favorites", ["article_id"], name: "index_favorites_on_article_id"
-  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+  add_index "books", ["author_id"], name: "index_books_on_author_id"
 
-  create_table "interests", force: :cascade do |t|
+  create_table "favorite_authors", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "topic_id"
+    t.integer "author_id"
   end
 
-  add_index "interests", ["topic_id"], name: "index_interests_on_topic_id"
-  add_index "interests", ["user_id"], name: "index_interests_on_user_id"
+  add_index "favorite_authors", ["author_id"], name: "index_favorite_authors_on_author_id"
+  add_index "favorite_authors", ["user_id"], name: "index_favorite_authors_on_user_id"
+
+  create_table "favorite_books", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+  end
+
+  add_index "favorite_books", ["book_id"], name: "index_favorite_books_on_book_id"
+  add_index "favorite_books", ["user_id"], name: "index_favorite_books_on_user_id"
 
   create_table "publications", force: :cascade do |t|
     t.string "name"
     t.string "url"
   end
 
-  create_table "sections", force: :cascade do |t|
-    t.string  "name"
-    t.integer "publication_id"
+  create_table "review_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.string  "text"
   end
 
-  add_index "sections", ["publication_id"], name: "index_sections_on_publication_id"
+  add_index "review_comments", ["review_id"], name: "index_review_comments_on_review_id"
+  add_index "review_comments", ["user_id"], name: "index_review_comments_on_user_id"
 
-  create_table "subjects", force: :cascade do |t|
-    t.integer "topic_id"
-    t.integer "article_id"
-  end
-
-  add_index "subjects", ["article_id"], name: "index_subjects_on_article_id"
-  add_index "subjects", ["topic_id"], name: "index_subjects_on_topic_id"
-
-  create_table "topics", force: :cascade do |t|
+  create_table "reviewers", force: :cascade do |t|
     t.string "name"
   end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string  "title"
+    t.integer "reviewer_id"
+    t.integer "publication_id"
+    t.integer "book_id"
+    t.string  "url"
+    t.date    "publish_date"
+    t.string  "blurb"
+  end
+
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"
+  add_index "reviews", ["publication_id"], name: "index_reviews_on_publication_id"
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id"
 
   create_table "users", force: :cascade do |t|
     t.string "name"

@@ -1,0 +1,9 @@
+<% require 'cgi' %> 	
+<!-- http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/ -->
+
+<h3>Reviews for <%= @book.title %></h3>
+
+<ul>
+<% @reviews.each do |review| %>
+	<li><%= CGI.unescapeHTML(review.blurb) %> - <%= review.reviewer.name %></li>
+<% end %>

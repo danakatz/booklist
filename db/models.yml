@@ -1,45 +1,57 @@
-Article
+Review
   title: string
-  author_id: integer
+  blurb: string
+  reviewer_id: integer
   publication_id: integer
-  section_id: integer
+  book_id: integer
   url: string
   publish_date: date
 
-Author
-  first_name: string
-  last_name: string
+Reviewer
+  name: string
 
 Publication
   name: string
   url: string
 
-Topic
+Book
+  title: string
+  author_id: integer
+  description: string
+  isbn: string
+  image_url: string
+  amazon_url: string
+  reviewed: boolean
+  rank: integer
+  current: boolean
+
+Author
   name: string
 
-Subject
-  topic_id: integer
-  article_id: integer
-
-Section
-  name: string
-  publication_id: integer
-
-Favorite
+FavoriteAuthor
   user_id: integer
-  article_id: integer
+  author_id: integer
 
-Interest
+FavoriteBook
   user_id: integer
-  topic_id: integer
+  book_id: integer
 
-Comment
+BookComment
   user_id: integer
-  article_id: integer
+  book_id: integer
+  text: string
+
+ReviewComment
+  user_id: integer
+  review_id: integer
   text: string
 
 User
   name: string
+
+# Genre
+#   topic_id: integer
+#   article_id: integer
 
 
 # Example table for a typical Book model.
