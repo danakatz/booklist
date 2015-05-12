@@ -17,15 +17,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name"
   end
 
-  create_table "book_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "book_id"
-    t.string  "text"
-  end
-
-  add_index "book_comments", ["book_id"], name: "index_book_comments_on_book_id"
-  add_index "book_comments", ["user_id"], name: "index_book_comments_on_user_id"
-
   create_table "books", force: :cascade do |t|
     t.string  "title"
     t.integer "author_id"
@@ -39,6 +30,16 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_index "books", ["author_id"], name: "index_books_on_author_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.string  "text"
+    t.date    "date"
+  end
+
+  add_index "comments", ["book_id"], name: "index_comments_on_book_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "favorite_authors", force: :cascade do |t|
     t.integer "user_id"

@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   ############################################################################
   
   
-  get '/comments/new' => 'comments#new', as: 'new_comment'
-  post '/comments' => 'comments#create', as: 'create_comment'
+  get '/books/:book_id/comments/new' => 'comments#new', as: 'new_comment'
+  post '/books/:book_id/comments' => 'comments#create', as: 'create_comment'
 
-  get '/comments/' => 'comments#index', as: 'comments'
+  get '/books/:book_id/comments/' => 'comments#index'
   get '/comments/:id' => 'comments#show', as: 'comment'
 
   get '/comments/:id/edit' => 'comments#edit', as: 'edit_comment'

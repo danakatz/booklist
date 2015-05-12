@@ -25,11 +25,14 @@
 	<% end %>
 <% end %>
 
-<% if @book.book_comments.count > 0 %>
-	<h4>Comments</h4>
-	<%= @book.book_comments.each do |comment| %>
-		<p><%= comment.user.name %> says:</br>
-		<%= comment.text %></p>
-	<% end %>
+<h4>Latest Comment</h4>
+<% if @book.comments.count > 0 %>
+	<% comment = @book.comments.order('date DESC').first %>
+	<p><%= comment.user.name %> says:</br>
+	<%= comment.text %></p>
+	<%= link_to 'View all comments', "/books/#{@book.id}/comments" %></br>
+<% else %>
+	No comments yet.
 <% end %>
+<p><%= link_to 'Leave a comment', new_comment_url(@book.id) %></p>
 <p><%= link_to 'Home', books_url %></p>

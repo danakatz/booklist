@@ -1,0 +1,5 @@
+<h4>New Comment - <%= @book.title %></h4>
+<%= form_tag "/books/#{@book.id}/comments" do %>
+	<%= text_area_tag 'comment', nil, size: '50x6' %></br>
+	<%= submit_tag 'Post comment' %>
+<% end %>

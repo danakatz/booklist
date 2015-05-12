@@ -31,10 +31,11 @@ FavoriteBook
   user_id: integer
   book_id: integer
 
-BookComment
+Comment
   user_id: integer
   book_id: integer
   text: string
+  date: date
 
 User
   name: string
