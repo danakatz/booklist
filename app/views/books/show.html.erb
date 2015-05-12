@@ -1,3 +1,6 @@
+<% require 'cgi' %> 	
+<!-- http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/ -->
+
 <%= image_tag @book.image_url, class: "book_cover" %>
 <h3><%= @book.title %></h3>
 <h4>by <%= @book.author.name %></h4>
@@ -10,4 +13,23 @@
 
 <%= link_to 'Bookmark' %></br>
 <%= link_to 'Add author to Favorites' %></br>
-<%= link_to 'Home', books_url %>
+
+<% if @book.reviewed %>
+	<h4>NYT Reviews</h4>
+
+	<% @book.reviews.each do |review| %>
+		<p>
+		<%= CGI.unescapeHTML(review.blurb) %> - <%= review.reviewer.name %></br>
+		<%= link_to 'Full review', review.url %>
+		</p>
+	<% end %>
+<% end %>
+
+<% if @book.book_comments.count > 0 %>
+	<h4>Comments</h4>
+	<%= @book.book_comments.each do |comment| %>
+		<p><%= comment.user.name %> says:</br>
+		<%= comment.text %></p>
+	<% end %>
+<% end %>
+<p><%= link_to 'Home', books_url %></p>
