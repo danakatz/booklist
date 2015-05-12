@@ -10,10 +10,6 @@ Review
 Reviewer
   name: string
 
-Publication
-  name: string
-  url: string
-
 Book
   title: string
   author_id: integer

@@ -1,11 +1,3 @@
-p = Publication.find_or_create_by name: "New York Times"
-p.url = "http://www.nytimes.com"
-p.save
-					
-p = Publication.find_or_create_by name: "USA Today"
-p.url = "http://www.usatoday.com"
-p.save
-
 User.find_or_create_by name: "Dana Katz"
 
 Book.all.each do |book|
@@ -65,7 +57,6 @@ Book.all.each do |book|
 			review.url = review_hash['url']
 			review.publish_date = Date.parse(review_hash['publication_dt'])
 			review.save
-			puts 'saved review'
 		end
 	end
 end
