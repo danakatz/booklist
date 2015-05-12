@@ -3,8 +3,7 @@
 <% @books.each do |book| %>
 	<%= book.rank %>. 
 	<%= link_to book.title, book_url(book.id) %> - <%= book.author.name %>
-	<% if book.reviewed %>
-		- <%= link_to 'Read reviews', "books/#{book.id}/reviews/" %>
-	<% end %>
 	</br>
 <% end %>
+
+<p><%= link_to 'Archive', archive_url %>

@@ -8,4 +8,8 @@ class BooksController < ApplicationController
         @book = Book.find_by_id(params[:id])
     end
 
+    def archive
+    	@books = Book.where(current: false).order('title')
+    end
+
 end
