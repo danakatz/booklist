@@ -19,7 +19,7 @@
 
 	<% @book.reviews.each do |review| %>
 		<p>
-		<%= CGI.unescapeHTML(review.blurb) %> - <%= review.reviewer.name %></br>
+		<%= CGI.unescapeHTML(review.blurb) %>  <%= link_to review.reviewer.name, reviewer_url(review.reviewer_id) %></br>
 		<%= link_to 'Full review', review.url %>
 		</p>
 	<% end %>

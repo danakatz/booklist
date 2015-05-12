@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  root 'books#index'
+
+  get '/books' => 'books#index', as: 'books'
+  get '/books/archive' => 'books#archive', as: 'archive'
+
+  get '/books/:id' => 'books#show', as: 'book'
+
+  ############################################################################
+  
   
   get '/comments/new' => 'comments#new', as: 'new_comment'
   post '/comments' => 'comments#create', as: 'create_comment'
@@ -13,11 +23,6 @@ Rails.application.routes.draw do
 
   ############################################################################
 
-  root 'books#index'
-
-  get '/books' => 'books#index', as: 'books'
-  get '/books/archive' => 'books#archive', as: 'archive'
-
-  get '/books/:id' => 'books#show', as: 'book'
+  get '/reviewers/:id' => 'reviewers#show', as: 'reviewer'
 
 end
