@@ -41,13 +41,13 @@ BookComment
   book_id: integer
   text: string
 
-ReviewComment
-  user_id: integer
-  review_id: integer
-  text: string
-
 User
   name: string
+
+# ReviewComment
+#   user_id: integer
+#   review_id: integer
+#   text: string
 
 # Genre
 #   topic_id: integer
