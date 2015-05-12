@@ -2,7 +2,6 @@ Review
   title: string
   blurb: string
   reviewer_id: integer
-  publication_id: integer
   book_id: integer
   url: string
   publish_date: date
