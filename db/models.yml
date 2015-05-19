@@ -38,7 +38,9 @@ Comment
   date: date
 
 User
-  name: string
+  username: string
+  email: string
+  password: string
 
 # ReviewComment
 #   user_id: integer

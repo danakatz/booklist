@@ -74,7 +74,9 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id"
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "password"
+    t.string "username"
+    t.string "email"
   end
 
 end
