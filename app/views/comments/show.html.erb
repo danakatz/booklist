@@ -1,4 +1,7 @@
-<p>On <%= @comment.date %>, <%= @comment.user.name %> wrote:</br>
+<p>On <%= @comment.date %>, <%= @comment.user.username %> wrote:</br>
 <%= @comment.text %></p>
-<%= link_to 'Edit comment', edit_comment_url(@comment.id) %></br>
-<%= link_to 'Delete comment', delete_comment_url(@comment.id), :method => :delete %>
+<% puts "signed in user #{cookies['user_id']}", "commenter #{@comment.user_id}" %>
+<% if cookies['user_id'].to_i == @comment.user_id %>
+	<%= link_to 'Edit comment', edit_comment_url(@comment.id) %></br>
+	<%= link_to 'Delete comment', delete_comment_url(@comment.id), :method => :delete %>
+<% end %>

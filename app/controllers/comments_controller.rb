@@ -10,17 +10,17 @@ class CommentsController < ApplicationController
 
 	def new
 		@book = Book.find_by_id(params[:book_id])
+		@comment = Comment.new
 	end
 
 	def create
 		book_id = params[:book_id].to_i
-		comment = Comment.new
-		comment.user_id = User.first.id
-		comment.book_id = book_id
-		comment.text = params[:comment]
-		comment.date = Date.today
-		comment.save
-		redirect_to "/books/#{book_id}"
+		@new_comment = Comment.new(user_id: cookies['user_id'], book_id: book_id, text: params[:comment], date: Date.today)
+		if @new_comment.save
+			redirect_to book_url(book_id)
+		else
+			redirect_to new_comment_url(book_id)
+		end
 	end
 
 	def edit

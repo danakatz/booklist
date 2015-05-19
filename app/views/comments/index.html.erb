@@ -1,6 +1,6 @@
 <h3>Comments - <%= @comments.first.book.title %></h3>
 <% @comments.each do |comment| %>
-	<p><%= comment.user.name %> says: </br>
+	<p><%= comment.user.username %> says: </br>
 	<%= comment.text %></br>
 	<%= link_to 'Full comment', comment_url(comment.id) %></p>
 <% end %>

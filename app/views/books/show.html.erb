@@ -28,11 +28,16 @@
 <h4>Latest Comment</h4>
 <% if @book.comments.count > 0 %>
 	<% comment = @book.comments.order('date DESC').first %>
-	<p><%= comment.user.name %> says:</br>
+	<p><%= comment.user.username %> says:</br>
 	<%= comment.text %></p>
 	<%= link_to 'View all comments', "/books/#{@book.id}/comments" %></br>
 <% else %>
 	No comments yet.
 <% end %>
-<p><%= link_to 'Leave a comment', new_comment_url(@book.id) %></p>
+<% if cookies['user_id'].present? %>
+	<p><%= link_to 'Leave a comment', new_comment_url(@book.id) %></p>
+<% else %>
+	<p><%= link_to 'Sign in', login_url %> to leave a comment.</p>
+<% end %>
+
 <p><%= link_to 'Home', books_url %></p>
