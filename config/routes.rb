@@ -7,6 +7,15 @@ Rails.application.routes.draw do
 
   get '/books/:id' => 'books#show', as: 'book'
 
+  ############################################################################  
+
+  get '/login' => 'sessions#new', as: 'login'
+  post '/sessions' => 'sessions#create'
+  delete '/sessions' => 'sessions#destroy', as: 'logout'
+
+  get '/signup' => 'users#new', as: 'create_account'
+  post '/users' => 'users#create'
+
   ############################################################################
   
   

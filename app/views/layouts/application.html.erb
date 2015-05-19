@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Final</title>
+  <title>NYT Books</title>
   <%= stylesheet_link_tag 	 "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if cookies['user_id'].present? %>
+	Hi, <%= User.find_by_id(cookies['user_id']).username %>
+	<%= link_to "Sign out", logout_url, :method => :delete %>
+<% else %>
+	<%= link_to "Sign in", login_url %>
+	<%= link_to "Sign up", create_account_url %>
+<% end %>
+
+<% if notice.present? %>
+	<div class="alert alert-info">
+		<%= notice %>
+	</div>
+<% end %>
 
 <%= yield %>
 

@@ -1,5 +1,3 @@
-User.find_or_create_by name: "Dana Katz"
-
 todayStr = Date.today.strftime("%Y-%m-%d")
 current_data = JSON.parse(open("http://api.nytimes.com/svc/books/v3/lists/#{todayStr}/combined-print-and-e-book-fiction.json?api-key=109b53e7b968c68be785cd9deb96d603%3A5%3A61185311").read)
 
@@ -65,6 +63,8 @@ Book.where(reviewed: true).each do |book|
 		end
 	end
 end
+
+puts 'Seeded successfully!'
 
 
 # This file should contain all the record creation needed to seed the database with its default values.
