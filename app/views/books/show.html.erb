@@ -1,54 +1,59 @@
 <% require 'cgi' %> 	
 <!-- http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/ -->
 
-<%= image_tag @book.image_url, class: "book_cover" %>
-<h3><%= @book.title %></h3>
-<h4>by <%= @book.author.name %></h4>
+<div class="book_info">
+	<%= image_tag @book.image_url, class: "book_cover" %>
+	<h3><%= @book.title %></h3>
+	<h4>by <%= @book.author.name %></h4>
 
-<% if !@book.description.present? %>
-	<p>No description available.</p>
-<% else %>
-	<p><%= @book.description %></p>
-<% end %>
-
-<% if cookies['user_id'] %>
-	<% if FavoriteBook.find_by(user_id: cookies['user_id'], book_id: @book.id).nil? %> 
-		<%= link_to 'Favorite this book', add_favorite_book_url(@book.id), :method => :post %></br>
+	<% if !@book.description.present? %>
+		<p>No description available.</p>
 	<% else %>
-		<%= link_to 'Remove book from favorites', delete_favorite_book_url(@book.id), :method => :delete %></br>
+		<p><%= @book.description %></p>
 	<% end %>
 
-	<% if FavoriteAuthor.find_by(user_id: cookies['user_id'], author_id: @book.author.id).nil? %>
-		<%= link_to 'Favorite this author', add_favorite_author_url(@book.id), :method => :post %></br>
-	<% else %>
-		<%= link_to 'Remove author from favorites', delete_favorite_author_url(@book.id), :method => :delete %></br>
+	<% if cookies['user_id'] %>
+		<% if FavoriteBook.find_by(user_id: cookies['user_id'], book_id: @book.id).nil? %> 
+			<%= link_to 'Favorite this book', add_favorite_book_url(@book.id), :method => :post %></br>
+		<% else %>
+			<%= link_to 'Remove book from favorites', delete_favorite_book_url(@book.id), :method => :delete %></br>
+		<% end %>
+
+		<% if FavoriteAuthor.find_by(user_id: cookies['user_id'], author_id: @book.author.id).nil? %>
+			<%= link_to 'Favorite this author', add_favorite_author_url(@book.id), :method => :post %></br>
+		<% else %>
+			<%= link_to 'Remove author from favorites', delete_favorite_author_url(@book.id), :method => :delete %></br>
+		<% end %>
 	<% end %>
-<% end %>
 
-<%= link_to 'Amazon', @book.amazon_url %>
+	<%= link_to 'Amazon', @book.amazon_url %>
+</div>
 
+<div class="reviews">
 <% if @book.reviewed %>
 	<h4>NYT Reviews</h4>
-
 	<% @book.reviews.each do |review| %>
 		<p>
-		<%= CGI.unescapeHTML(review.blurb) %>  <%= link_to review.reviewer.name, reviewer_url(review.reviewer_id) %></br>
-		<%= link_to 'Full review', review.url %>
+		<%= CGI.unescapeHTML(review.blurb) %> </br>
+		<%= link_to review.reviewer.name, reviewer_url(review.reviewer_id) %> | <%= link_to 'Full review', review.url %>
 		</p>
 	<% end %>
 <% end %>
+</div>
 
-<h4>Latest Comment</h4>
-<% if @book.comments.count > 0 %>
-	<% comment = @book.comments.order('id DESC').first %>
-	<p><%= comment.user.username %> says:</br>
-	<%= comment.text %></p>
-	<%= link_to 'View all comments', "/books/#{@book.id}/comments" %></br>
-<% else %>
-	No comments yet.
-<% end %>
-<% if cookies['user_id'].present? %>
-	<p><%= link_to 'Leave a comment', new_comment_url(@book.id) %></p>
-<% else %>
-	<p><%= link_to 'Sign in', login_url %> to leave a comment.</p>
-<% end %>
+<div class="comments">
+	<h4>Latest Comment</h4>
+	<% if @book.comments.count > 0 %>
+		<% comment = @book.comments.order('id DESC').first %>
+		<p><%= comment.user.username %> says:</br>
+		<%= comment.text %></p>
+		<%= link_to 'View all comments', "/books/#{@book.id}/comments" %></br>
+	<% else %>
+		No comments yet.
+	<% end %>
+	<% if cookies['user_id'].present? %>
+		<p><%= link_to 'Leave a comment', new_comment_url(@book.id) %></p>
+	<% else %>
+		<p><%= link_to 'Sign in', login_url %> to leave a comment.</p>
+	<% end %>
+</div>

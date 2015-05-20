@@ -4,8 +4,8 @@
 <h3>Reviews by <%= @reviewer.name %></h3>
 
 <% @reviews.each do |review| %>
-	On <%= link_to review.title, book_url(review.book_id) %>:</br>
+	<p>On <%= link_to review.title, book_url(review.book_id) %>:</br>
 	<%= CGI.unescapeHTML(review.blurb) %></br>
-	<%= link_to 'Full review', review.url %></br>
+	<%= link_to 'Full review', review.url %></br></p>
 
 <% end %>
