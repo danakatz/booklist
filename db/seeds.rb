@@ -9,7 +9,7 @@ all_data = [old_data_1, old_data_2, old_data_3, current_data]
 
 all_data.each do |data|
 	data["results"]["books"].each do |book_hash|
-		book = Book.find_by(isbn: book_hash['primary_isbn13'])
+		book = Book.find_by(title: book_hash['title'])
 		author = Author.find_by(name: book_hash['author'])
 		if author == nil
 			author = Author.new
@@ -34,7 +34,7 @@ all_data.each do |data|
 end
 
 current_data["results"]["books"].each do |book_hash|
-	book = Book.find_by(isbn: book_hash['primary_isbn13'])
+	book = Book.find_by(title: book_hash['title'])
 	book.current = true
 	book.save
 end
