@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
 	def index
-		@comments = Book.find_by_id(params[:book_id]).comments
+		@comments = Book.find_by_id(params[:book_id]).comments.order('id DESC')
 	end
 
 	def show
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 		book_id = params[:book_id].to_i
 		@new_comment = Comment.new(user_id: cookies['user_id'], book_id: book_id, text: params[:comment], date: Date.today)
 		if @new_comment.save
-			redirect_to book_url(book_id)
+			redirect_to "/books/#{book_id}/comments"
 		else
 			redirect_to new_comment_url(book_id)
 		end

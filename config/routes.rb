@@ -17,7 +17,14 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   ############################################################################
-  
+
+  post '/favorite_books/:book_id' => 'favorite_books#create', as: 'add_favorite_book'
+  post '/favorite_authors/:book_id' => 'favorite_authors#create', as: 'add_favorite_author'
+
+  delete '/favorite_books/:book_id' => 'favorite_books#destroy', as: 'delete_favorite_book'
+  delete '/favorite_authors/:book_id' => 'favorite_authors#destroy', as: 'delete_favorite_author'
+
+  ############################################################################  
   
   get '/books/:book_id/comments/new' => 'comments#new', as: 'new_comment'
   post '/books/:book_id/comments' => 'comments#create', as: 'create_comment'

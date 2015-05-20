@@ -11,8 +11,19 @@
 	<p><%= @book.description %></p>
 <% end %>
 
-<%= link_to 'Bookmark' %></br>
-<%= link_to 'Add author to Favorites' %></br>
+<% if cookies['user_id'] %>
+	<% if FavoriteBook.find_by(user_id: cookies['user_id'], book_id: @book.id).nil? %> 
+		<%= link_to 'Favorite this book', add_favorite_book_url(@book.id), :method => :post %></br>
+	<% else %>
+		<%= link_to 'Remove book from favorites', delete_favorite_book_url(@book.id), :method => :delete %></br>
+	<% end %>
+
+	<% if FavoriteAuthor.find_by(user_id: cookies['user_id'], author_id: @book.author.id).nil? %>
+		<%= link_to 'Favorite this author', add_favorite_author_url(@book.id), :method => :post %></br>
+	<% else %>
+		<%= link_to 'Remove author from favorites', delete_favorite_author_url(@book.id), :method => :delete %></br>
+	<% end %>
+<% end %>
 
 <% if @book.reviewed %>
 	<h4>NYT Reviews</h4>
@@ -27,7 +38,7 @@
 
 <h4>Latest Comment</h4>
 <% if @book.comments.count > 0 %>
-	<% comment = @book.comments.order('date DESC').first %>
+	<% comment = @book.comments.order('id DESC').first %>
 	<p><%= comment.user.username %> says:</br>
 	<%= comment.text %></p>
 	<%= link_to 'View all comments', "/books/#{@book.id}/comments" %></br>
