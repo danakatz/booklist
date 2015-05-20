@@ -25,6 +25,8 @@
 	<% end %>
 <% end %>
 
+<%= link_to 'Amazon', @book.amazon_url %>
+
 <% if @book.reviewed %>
 	<h4>NYT Reviews</h4>
 
@@ -50,5 +52,3 @@
 <% else %>
 	<p><%= link_to 'Sign in', login_url %> to leave a comment.</p>
 <% end %>
-
-<p><%= link_to 'Home', books_url %></p>
