@@ -4,6 +4,10 @@ class FavoriteAuthorsController < ApplicationController
 		@favorite_authors = User.find_by_id(cookies['user_id']).authors
 	end
 
+	def show
+		@books = Author.find_by_id(params[:author_id]).books.order('title')
+	end
+
 	def create
 		author_id = Book.find_by_id(params[:book_id]).author.id
 		favorite_author = FavoriteAuthor.new(user_id: cookies['user_id'], author_id: author_id)

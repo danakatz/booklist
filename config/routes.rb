@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   post '/favorite_books/:book_id' => 'favorite_books#create', as: 'add_favorite_book'
   delete '/favorite_books/:book_id' => 'favorite_books#destroy', as: 'delete_favorite_book'
 
-  get 'favorite_authors' => 'favorite_authors#index', as: 'favorite_authors'
+  get '/favorite_authors' => 'favorite_authors#index', as: 'favorite_authors'
+  get '/favorite_authors/:author_id' => 'favorite_authors#show', as: 'author_books'
   post '/favorite_authors/:book_id' => 'favorite_authors#create', as: 'add_favorite_author'
   delete '/favorite_authors/:book_id' => 'favorite_authors#destroy', as: 'delete_favorite_author'
 
