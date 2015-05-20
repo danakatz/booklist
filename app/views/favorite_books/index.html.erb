@@ -1,0 +1,6 @@
+<h3>Favorite Books</h3>
+
+<% @favorite_books.each do |book| %>
+	<%= link_to book.title, book_url(book.id) %> - <%= book.author.name %>
+	</br>
+<% end %>
