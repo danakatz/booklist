@@ -12,14 +12,14 @@
 		<p><%= @book.description %></p>
 	<% end %>
 
-	<% if cookies['user_id'] %>
-		<% if FavoriteBook.find_by(user_id: cookies['user_id'], book_id: @book.id).nil? %> 
+	<% if session['user_id'] %>
+		<% if FavoriteBook.find_by(user_id: session['user_id'], book_id: @book.id).nil? %> 
 			<%= link_to 'Favorite this book', add_favorite_book_url(@book.id), :method => :post %></br>
 		<% else %>
 			<%= link_to 'Remove book from favorites', delete_favorite_book_url(@book.id), :method => :delete %></br>
 		<% end %>
 
-		<% if FavoriteAuthor.find_by(user_id: cookies['user_id'], author_id: @book.author.id).nil? %>
+		<% if FavoriteAuthor.find_by(user_id: session['user_id'], author_id: @book.author.id).nil? %>
 			<%= link_to 'Favorite this author', add_favorite_author_url(@book.id), :method => :post %></br>
 		<% else %>
 			<%= link_to 'Remove author from favorites', delete_favorite_author_url(@book.id), :method => :delete %></br>
@@ -51,7 +51,7 @@
 	<% else %>
 		No comments yet.
 	<% end %>
-	<% if cookies['user_id'].present? %>
+	<% if session['user_id'].present? %>
 		<p><%= link_to 'Leave a comment', new_comment_url(@book.id) %></p>
 	<% else %>
 		<p><%= link_to 'Sign in', login_url %> to leave a comment.</p>

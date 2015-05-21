@@ -11,8 +11,8 @@
 <body>
 
 <div class="header">
-	<% if cookies['user_id'].present? %>
-		Hi, <%= User.find_by_id(cookies['user_id']).username %> | 
+	<% if session['user_id'].present? %>
+		Hi, <%= User.find_by_id(session['user_id']).username %> | 
 		<%= link_to "Favorite Books", favorite_books_url %> | 
 		<%= link_to "Favorite Authors", favorite_authors_url %> | 
 		<%= link_to "Sign out", logout_url, :method => :delete %>

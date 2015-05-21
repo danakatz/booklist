@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
 	def create
 		book_id = params[:book_id].to_i
-		@new_comment = Comment.new(user_id: cookies['user_id'], book_id: book_id, text: params[:comment], date: Date.today)
+		@new_comment = Comment.new(user_id: session['user_id'], book_id: book_id, text: params[:comment], date: Date.today)
 		if @new_comment.save
 			redirect_to "/books/#{book_id}/comments"
 		else

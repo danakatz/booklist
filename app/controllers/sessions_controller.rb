@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 			user = User.find_by(username: params[:username])
 			if user
 				if user.password == params[:password]
-					cookies['user_id'] = user.id
+					session['user_id'] = user.id
 					redirect_to root_url, notice: "Welcome, #{user.username}!"
 				else
 					redirect_to login_url, notice: "Username and password don't match."
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		cookies.delete 'user_id'
+		session.delete 'user_id'
 		redirect_to login_url, notice: "You've been signed out."
 	end
 
