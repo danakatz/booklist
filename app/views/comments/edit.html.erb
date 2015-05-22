@@ -1,5 +1,5 @@
 <h4>Edit Comment - <%= @comment.book.title %></h4>
-<%= form_tag update_comment_url(@comment.id), :method => 'patch' do %>
+<%= form_tag "/comments/#{session['user_id']}/#{@comment.id}", :method => 'patch' do %>
 	<%= text_area_tag 'comment', @comment.text, size: '50x6' %></br>
 	<%= submit_tag 'Update comment' %>
 <% end %>

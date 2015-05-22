@@ -40,7 +40,7 @@ Comment
 User
   username: string
   email: string
-  password: string
+  password_digest: string
 
 # ReviewComment
 #   user_id: integer

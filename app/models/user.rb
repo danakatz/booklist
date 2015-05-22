@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+	has_secure_password
+	
 	has_many :favorite_books
 	has_many :books, :through => :favorite_books
 

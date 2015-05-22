@@ -18,12 +18,12 @@ Rails.application.routes.draw do
 
   ############################################################################
 
-  get '/favorite_books' => 'favorite_books#index', as: 'favorite_books'
+  get '/favorite_books/:user_id' => 'favorite_books#index', as: 'favorite_books'
   post '/favorite_books/:book_id' => 'favorite_books#create', as: 'add_favorite_book'
   delete '/favorite_books/:book_id' => 'favorite_books#destroy', as: 'delete_favorite_book'
 
-  get '/favorite_authors' => 'favorite_authors#index', as: 'favorite_authors'
-  get '/favorite_authors/:author_id' => 'favorite_authors#show', as: 'author_books'
+  get '/favorite_authors/:user_id' => 'favorite_authors#index', as: 'favorite_authors'
+  get '/authors/:author_id/books' => 'favorite_authors#show', as: 'author_books'
   post '/favorite_authors/:book_id' => 'favorite_authors#create', as: 'add_favorite_author'
   delete '/favorite_authors/:book_id' => 'favorite_authors#destroy', as: 'delete_favorite_author'
 
@@ -34,12 +34,12 @@ Rails.application.routes.draw do
   post '/books/:book_id/comments' => 'comments#create', as: 'create_comment'
 
   get '/books/:book_id/comments/' => 'comments#index'
-  get '/comments/:id' => 'comments#show', as: 'comment'
+  get '/comments/:comment_id' => 'comments#show', as: 'comment'
 
-  get '/comments/:id/edit' => 'comments#edit', as: 'edit_comment'
-  patch '/comments/:id' => 'comments#update', as: 'update_comment'
+  get '/comments/:user_id/:comment_id/edit' => 'comments#edit'
+  patch '/comments/:user_id/:comment_id' => 'comments#update'
 
-  delete '/comments/:id' => 'comments#destroy', as: 'delete_comment'
+  delete '/comments/:user_id/:comment_id' => 'comments#destroy'
 
   ############################################################################
 
