@@ -1,6 +1,0 @@
-<h3>Books by <%= Author.find_by_id(params[:author_id]).name %></h3>
-
-<% @books.each do |book| %>
-	<%= link_to book.title, book_url(book.id) %>
-	</br>
-<% end %>
