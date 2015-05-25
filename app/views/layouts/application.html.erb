@@ -10,27 +10,41 @@
 </head>
 <body>
 
-<div class="header">
-	<% if session['user_id'].present? %>
-		Hi, <%= User.find_by_id(session['user_id']).username %> | 
-		<%= link_to "Favorite Books", favorite_books_url(session['user_id']) %> | 
-		<%= link_to "Favorite Authors", favorite_authors_url(session['user_id']) %> | 
-		<%= link_to "Sign out", logout_url, :method => :delete %>
-	<% else %>
-		<%= link_to "Sign in", login_url %> | 
-		<%= link_to "Sign up", create_account_url %>
-	<% end %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_url %>">NYT Books</a>
+    </div>
 
-	<% if notice.present? %>
-		<div class="alert alert-info">
-			<%= notice %>
-		</div>
-	<% end %>
-</div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href=<%= archive_url %>>Archive</a></li>
+        <% if session['user_id'].present? %>
+	        <li><a href="<%= favorite_books_url(session['user_id']) %>">Favorite Books</a></li>
+	        <li><a href="<%= favorite_authors_url(session['user_id']) %>">Favorite Authors</a></li>
+	    <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      	<% if session['user_id'].present? %>
+	        <li><a href="<%= logout_url %>" data-method="delete">Sign Out</a></li>
+	    <% else %>
+	    	<li><a href="<%= login_url %>">Sign In</a></li>
+	    	<li><a href="<%= create_account_url %>">Sign Up</a></li>
+		<% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<% if notice.present? %>
+	<div class="alert alert-info">
+		<%= notice %>
+	</div>
+<% end %>
 
 <%= yield %>
-
-<div class="footer"><%= link_to 'Home', books_url %> | <%= link_to 'Archive', archive_url %></div>
 
 </body>
 </html>
