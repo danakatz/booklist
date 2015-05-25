@@ -1,7 +1,0 @@
-<h3>Today's Fiction Best-Sellers</h3>
-
-<% @books.each do |book| %>
-	<%= book.rank %>. 
-	<%= link_to book.title, book_url(book.id) %> - <%= book.author.name %>
-	</br>
-<% end %>

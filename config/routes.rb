@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   delete '/favorite_books/:book_id' => 'favorite_books#destroy', as: 'delete_favorite_book'
 
   get '/favorite_authors/:user_id' => 'favorite_authors#index', as: 'favorite_authors'
-  get '/authors/:author_id/books' => 'favorite_authors#show', as: 'author_books'
   post '/favorite_authors/:book_id' => 'favorite_authors#create', as: 'add_favorite_author'
   delete '/favorite_authors/:book_id' => 'favorite_authors#destroy', as: 'delete_favorite_author'
 
@@ -40,6 +39,8 @@ Rails.application.routes.draw do
   patch '/comments/:user_id/:comment_id' => 'comments#update'
 
   delete '/comments/:user_id/:comment_id' => 'comments#destroy'
+
+  get '/authors/:author_id/books' => 'authors#show', as: 'author_books'
 
   ############################################################################
 
