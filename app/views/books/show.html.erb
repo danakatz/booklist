@@ -1,10 +1,10 @@
-<% require 'cgi' %> 	
+<% require 'cgi' %>
 <!-- http://www.moxleystratton.com/blog/2007/07/31/ruby-escape-unescape-encode-decode-html-xml-uri-url/ -->
 
 <div class="book_info">
 	<%= image_tag @book.image_url, class: "book_cover" %>
 	<h3><%= @book.title %></h3>
-	<h4>by <%= @book.author.name %></h4>
+	<h4>by <%= link_to @book.author.name, author_books_url(@book.author.id) %></h4>
 
 	<% if !@book.description.present? %>
 		<p>No description available.</p>
