@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
 	def destroy
 		comment = Comment.find_by_id(params[:comment_id])
 		book_id = comment.book.id
-		comment.delete
+		comment.destroy
 		if Book.find_by_id(book_id).comments.count > 0 
 			redirect_to "/books/#{book_id}/comments"
 		else
