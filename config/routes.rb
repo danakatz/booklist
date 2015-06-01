@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   delete '/comments/:user_id/:comment_id' => 'comments#destroy'
 
+  ############################################################################
+
   get '/authors/:author_id/books' => 'authors#show', as: 'author_books'
 
   ############################################################################

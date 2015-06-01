@@ -1,9 +1,9 @@
 body {
-	font-family: 'Noto Serif', serif;
-	line-height: 1.6;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 20px;
+  font-family: 'Noto Serif', serif;
+  line-height: 1.6;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 .book_cover {
@@ -14,26 +14,26 @@ body {
 }
 
 .book_info {
-	clear: both;
-	margin-bottom: 20px;
-	width: 800px;
+  clear: both;
+  margin-bottom: 20px;
+  width: 800px;
 }
 
 .reviews {
-	clear: both;
-	width: 800px;
+  clear: both;
+  width: 800px;
 }
 
 .comments {
-	clear:both;
-	width: 800px;
+  clear:both;
+  width: 800px;
 }
 
 .footer {
-	margin-top: 20px
+  margin-top: 20px
 }
 
 .header {
-	clear: both;
-	margin-bottom: 20px
+  clear: both;
+  margin-bottom: 20px
 }

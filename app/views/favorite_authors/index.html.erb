@@ -1,10 +1,10 @@
 <h3>Favorite Authors</h3>
 
 <% if @favorite_authors.count < 1 %>
-	You don't have any favorite authors yet.
+  You don't have any favorite authors yet.
 <% else %>
-	<% @favorite_authors.each do |author| %>
-		<%= link_to author.name, author_books_url(author.id) %> 
-		</br>
-	<% end %>
+  <% @favorite_authors.each do |author| %>
+    <%= link_to author.name, author_books_url(author.id) %> 
+    </br>
+  <% end %>
 <% end %>

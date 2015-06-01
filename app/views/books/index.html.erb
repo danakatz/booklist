@@ -1,8 +1,8 @@
 <h3>Today's Fiction Best-Sellers</h3>
 
 <% @books.each do |book| %>
-	<div class="row">
-		<div class="col-sm-3"><%= book.rank %>. <%= link_to book.title, book_url(book.id) %></div> 
-		<div class="col-sm-8"><%= link_to book.author.name, author_books_url(book.author.id) %></div>
-	</div>
+  <div class="row">
+    <div class="col-sm-3"><%= book.rank %>. <%= link_to book.title, book_url(book.id) %></div> 
+    <div class="col-sm-8"><%= link_to book.author.name, author_books_url(book.author.id) %></div>
+  </div>
 <% end %>

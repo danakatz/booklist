@@ -1,8 +1,8 @@
 <h3>Comments - <%= @comments.first.book.title %></h3>
 <% @comments.each do |comment| %>
-	<p><%= comment.user.username %> says: </br>
-	<%= comment.text %></br>
-	<%= link_to 'Full comment', comment_url(comment.id) %></p>
+  <p><%= comment.user.username %> says: </br>
+  <%= comment.text %></br>
+  <%= link_to 'Full comment', comment_url(comment.id) %></p>
 <% end %>
 
 <p><%= link_to 'Return to Book Page', book_url(@comments.first.book.id) %>

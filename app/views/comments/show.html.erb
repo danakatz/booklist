@@ -1,7 +1,6 @@
 <p>On <%= @comment.date %>, <%= @comment.user.username %> wrote:</br>
 <%= @comment.text %></p>
-<% puts "signed in user #{cookies['user_id']}", "commenter #{@comment.user_id}" %>
 <% if session['user_id'].to_i == @comment.user_id %>
-	<%= link_to 'Edit comment', "/comments/#{session['user_id']}/#{@comment.id}/edit" %></br>
-	<%= link_to 'Delete comment', "/comments/#{session['user_id']}/#{@comment.id}", :method => :delete %>
+  <%= link_to 'Edit comment', "/comments/#{session['user_id']}/#{@comment.id}/edit" %></br>
+  <%= link_to 'Delete comment', "/comments/#{session['user_id']}/#{@comment.id}", :method => :delete %>
 <% end %>

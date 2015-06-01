@@ -1,12 +1,12 @@
 <h3>Favorite Books</h3>
 
 <% if @favorite_books.count < 1 %>
-	You don't have any favorite books yet.
+  You don't have any favorite books yet.
 <% else %>
-	<% @favorite_books.each do |book| %>
-		<div class="row">
-			<div class="col-sm-3"><%= link_to book.title, book_url(book.id) %></div> 
-			<div class="col-sm-9"><%= link_to book.author.name, author_books_url(book.author.id) %></div>
-		</div>
-	<% end %>
+  <% @favorite_books.each do |book| %>
+    <div class="row">
+      <div class="col-sm-3"><%= link_to book.title, book_url(book.id) %></div> 
+      <div class="col-sm-9"><%= link_to book.author.name, author_books_url(book.author.id) %></div>
+    </div>
+  <% end %>
 <% end %>
