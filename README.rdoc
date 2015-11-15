@@ -1,28 +1,6 @@
-== README
+== Booklist
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app allows users to see current New York Times best-selling books, mark favorite books and authors, read reviews, and leave comments.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+---
+====== This project was created as coursework for the University of Chicago Masters Program in Computer Science. MPCS 52553 - Web Development - Spring 2015
